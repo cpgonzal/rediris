@@ -1,0 +1,173 @@
+---
+title: "Estudio de las alertas del servicio de emergencias 112 del Gobierno de Canarias utilizando técnicas de ciencia de los datos"
+author: </br> Teno González Dos Santos (graduado  en Ingeniería Informática de ULL) </br>  Luis Santacreus Ríos, Carlos B. Rosa Remedios (CECOES 1-1-2 Canarias) </br>  Carlos Pérez-González (Departamento de Matemáticas, Estadística e Investigación Operativa de ULL) </br> Marcos Colebrook Santamaría, José Luis Roda García (Departamento de Ingeniería Informática y de Sistemas de ULL)
+
+output:
+  slidy_presentation:
+    incremental: yes
+---
+<style type="text/css">
+body, td {
+   font-size: 16px;
+}
+code.r{
+  font-size: 16px;
+}
+pre {
+  font-size: 16px
+}
+</style>
+
+## El CECOES 1-1-2
+
+>* Presentación del servicio
+
+## El sistema de gestión de alertas
+
+>* Breve descripción del sistema de gestión de incidencias
+
+
+## Objetivos planteados
+
+>* Desde el año 2005 se dispone de un histórico con una media de XXX incidencias registradas en ambas provincias
+
+>* El servicio del 112 se plantea, en colaboración con la ETSII de ULL, realizar un análisis de datos masivos de dichas incidencias desde el año 2005
+
+
+
+## Conjunto de datos
+
+>* Se ha trabajado con información relativa a las incidencias atendidas por el servicio tales como:
+
+-El sexo y la edad de la persona que es objeto de la alerta
+
+-Fecha y hora del inicio y el final de la alerta
+
+-El municipio donde tiene lugar
+
+-Los recursos que se han dispuesto para su resolución
+
+>* Se plantean varias fases de trabajo con los datos, de acuerdo a la siguiente planificación (ciencia de los datos)
+
+-Adquisición (R es el software que se ha considerado para este proyecto)
+
+-Preparación (depuración, normalización, etc...)
+
+-Análisis y presentación (mediante tablas y gráficos estadísticos)
+
+
+## Adquisición de datos
+
+>* Breve explicación con lo más destacado de la importación a .RData (tamaño final del archivo resultante) desde los archivos por año y provincia
+
+
+
+## Preparación de los datos: Depuración (I)
+
+```{r oper01a, echo=FALSE, eval=TRUE, cache=TRUE }
+inci.112 <- read.csv("visual/data/112_2005.txt", sep=";", 
+                     dec=",", stringsAsFactors=FALSE)
+```
+
+>* Se necesitan depurar variables como el sexo, la unidad en la que se mide la edad (años, meses, semanas, etc..), etc....
+
+```{r oper01b, eval=FALSE}
+table(SEXO, exclude=NULL)
+```
+```{r oper01c, echo=FALSE, eval=TRUE}
+table(inci.112$SEXO, exclude=NULL)[-1]
+```
+
+```{r oper01c2, echo=FALSE, eval=TRUE, fig.height=3}
+library(ggplot2)
+tab<-table(inci.112$SEXO, exclude=NULL)[-c(1,20)]
+tab<-data.frame(sex.codes=row.names(tab),frequency=tab)
+
+ggplot(tab, aes(x=sex.codes, y = frequency)) + geom_bar(stat="identity",fill="#FF9999", colour="black")+
+geom_text(aes(label=frequency), vjust=-0.1, size=3) 
+```
+
+>* Como se puede apreciar, debido a la frecuencia tan baja que presentan estos valores atípicos, se pueden considerar que no representan un conjunto significativo para el análisis posterior.
+```{r oper01f, eval=FALSE}
+SEXO[ SEXO %not in% c('Mu','Ho')]<-""
+```
+```{r oper01g, echo=FALSE, eval=TRUE}
+inci.112$SEXO[! inci.112$SEXO %in% c('Mu','Ho')]<-""
+```
+
+## Preparación de los datos: Depuración (II)
+
+>* El tratamiento ha sido muy similar en el caso de otras variables. Por ejemplo, la variable edad se recoge considerando la unidad de medida (edad en días, semanas o meses para recien nacidos y niños y edad en años)
+
+```{r oper01d, eval=FALSE}
+table(AMSD, exclude=NULL)
+```
+
+```{r oper01e, echo=FALSE, eval=TRUE}
+table(inci.112$AMSD, exclude=NULL)[-c(1,12)]
+```
+
+```{r oper01e2, echo=FALSE, eval=TRUE, fig.height=3}
+#library(ggplot2)
+tab<-table(inci.112$AMSD, exclude=NULL)[-c(1,12)]
+tab<-data.frame(amsd.codes=row.names(tab),frequency=tab)
+
+ggplot(tab, aes(x=amsd.codes, y = frequency)) + geom_bar(stat="identity",fill="#FF9999", colour="black")+
+geom_text(aes(label=frequency), vjust=-0.1, size=3) 
+```
+
+
+## Preparación de los datos: Normalización 
+
+>* Los variables de fecha y hora se normalizan siguiendo formato ISO
+
+```{r oper02a, eval=FALSE}
+FECHA.INICIO<-
+  strptime( paste(as.Date(DIA.INICIO,format= "%d/%m/%Y"), HORA.INICIO),
+            format= "%Y-%m-%d %H:%M:%S", tz="GMT")
+
+FECHA.FINALIZA<-
+  strptime( paste(as.Date(DIA.FINALIZA,format= "%d/%m/%Y"), HORA.FINALIZA),
+            format= "%Y-%m-%d %H:%M:%S", tz="GMT")
+```            
+
+>* De este modo, se pueden obtener variables derivadas
+
+```{r oper02b, eval=FALSE}
+DURALERTA<-as.numeric(difftime(FECHA.FINALIZA,FECHA.INICIO,units="hours"))
+``` 
+
+>* En algunos casos, también se lleva a cabo una codificación de ciertas variables, como por ejemplo el nombre del municipio
+
+```{r oper02c, eval=FALSE}
+table(Nombre.Municipio, exclude=NULL)
+```
+```{r oper02d, echo=FALSE, eval=TRUE}
+table(inci.112$Nombre.Municipio, exclude=NULL)[c(1,14,32,39, 54, 67, 81)]
+```
+
+>* La codificación, en estos casos, tiene como objetivo la posibilidad de añadir información de referencia geográfica de las incidencias.
+
+
+## Análisis y presentación: Creando un mapa base
+
+>* Utilizando la herramienta QGis se elabora una mapa base de Canarias para utilizarlo en las representaciones gráficas
+
+<div style="margin:0 auto;text-align:center">
+<object data="qgis.png" type="image/png" 
+  width="50%" height="50%" title="QGis"> 
+</object>
+</div>
+
+>* Se crea un mapa en formato GeoJSON para su utilización con librerías javascript como Highmaps
+
+<div style="margin:0 auto;text-align:center">
+<object data="geojson.png" type="image/png" 
+  width="50%" height="50%" title="GeoJSON"> 
+</object>
+</div>
+
+
+## Análisis y presentación: Aplicación web
+
+>* Ejemplos de resultados obtenidos
