@@ -16,6 +16,44 @@ code.r{
 pre {
   font-size: 16px
 }
+
+
+
+/*  CSS chunck 1  */
+th {  background-color:#E0E0E0 ;
+      border-bottom:1px solid black;
+      border: 1px solid black;
+      font-size : 40%;
+      padding:5px;}
+
+td{
+border-bottom:1px dotted black;
+border: 1px solid black;
+padding:5px;}
+
+table{ 
+border-collapse:collapse;
+margin:auto;
+border: 1px solid black;}
+
+div.columns       { width: 900px; }
+div.columns div   { width: 300px; height: 100px; float: left; }
+div.clear         { clear: both; }
+
+#wrap {
+   width:600px;
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+   width:300px;
+}
+#right_col {
+   float:right;
+   width:300px;
+}
+
+
 </style>
 
 ## El CECOES 1-1-2
@@ -29,7 +67,38 @@ pre {
 
 ## Objetivos planteados
 
->* Desde el año 2005 se dispone de un histórico con una media de XXX incidencias registradas en ambas provincias
+>* Desde el año 2005 se dispone de un histórico con las incidencias registradas en ambas provincias. Se observa un número bastanto alto de incidencias por año en ambas provincias. 
+
+<div id="wrap">
+<div id="left_col" style="margin:0 auto;text-align:center">
+<object data="graphics/calendario.jpg" type="image/png" 
+  width="40%" height="60%" title="calendario"> 
+</object>
+</div>
+<div id="right_col">
+|AÑO	         | Las Palmas  |S/C. Tenerife |
+|-------------:|------------:|-------------:|
+|2005	         |345,035	     |313,875       |
+|2006	         |355,433	     |329,674       |
+|2007	         |355,070	     |330,162       |
+|2008	         |370,344	     |351,335       |
+|2009	         |379,536	     |348,258       |
+|2010	         |371,366	     |338,472       |
+|2011	         |376,603	     |334,322       |
+|2012	         |372,012	     |346,953       |
+|2013	         |348,352	     |331,204       |
+|2014	         |359,035	     |346,127       |
+</div>
+</div>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
 
 >* El servicio del 112 se plantea, en colaboración con la ETSII de ULL, realizar un análisis de datos masivos de dichas incidencias desde el año 2005
 
@@ -38,29 +107,42 @@ pre {
 ## Conjunto de datos
 
 >* Se ha trabajado con información relativa a las incidencias atendidas por el servicio tales como:
-
--El sexo y la edad de la persona que es objeto de la alerta
-
--Fecha y hora del inicio y el final de la alerta
-
--El municipio donde tiene lugar
-
--Los recursos que se han dispuesto para su resolución
+    + El sexo y la edad de la persona que es objeto de la alerta
+    + Fecha y hora del inicio y el final de la alerta
+    + El municipio donde tiene lugar 
+    + Los recursos que se han dispuesto para su resolución (policía, bomberos, etc..)
 
 >* Se plantean varias fases de trabajo con los datos, de acuerdo a la siguiente planificación (ciencia de los datos)
+    + Adquisición (R es el software que se ha considerado para este proyecto)
+    + Preparación (depuración, normalización, etc...)
+    + Análisis y presentación (mediante tablas y gráficos estadísticos)
 
--Adquisición (R es el software que se ha considerado para este proyecto)
 
--Preparación (depuración, normalización, etc...)
+## Software R
 
--Análisis y presentación (mediante tablas y gráficos estadísticos)
+<div id="left_col" style="margin:0 auto;text-align:center">
+<object data="graphics/Rlogo.png" type="image/png" 
+  width="40%" height="40%" title="R"> 
+</object>
+</div>
 
+>* R es el lenguaje de programación que se ha convertido, en la última decada, en la herramienta más importante para estadística computacional, visualización y ciencia de los datos, tanto en el mundo académico como en la empresa y la industria.
+
+>* En todo el mundo, R se utiliza para resolver un gran número de problemas en campos que van desde la biología computacional hasta el marketing cuantitativo. De hecho, es una herramienta esencial para compañías como Google, Facebook y LinkedIn.
+
+<div style="margin:0 auto;text-align:center">
+<object data="graphics/Rpopularity.png" type="image/png" 
+  width="60%" height="60%" title="Rpopularity"> 
+</object>
+</div>
 
 ## Adquisición de datos
 
 >* Breve explicación con lo más destacado de la importación a .RData (tamaño final del archivo resultante) desde los archivos por año y provincia
 
+(describir el tamaño de los archivos .csv y el tamaño final de .RData)
 
+>* 
 
 ## Preparación de los datos: Depuración (I)
 
@@ -87,7 +169,7 @@ ggplot(tab, aes(x=sex.codes, y = frequency)) + geom_bar(stat="identity",fill="#F
 geom_text(aes(label=frequency), vjust=-0.1, size=3) 
 ```
 
->* Como se puede apreciar, debido a la frecuencia tan baja que presentan estos valores atípicos, se pueden considerar que no representan un conjunto significativo para el análisis posterior.
+>* Como se puede apreciar en el tratamiento de las incidencias en un sólo año, la frecuencia de los valores atípicos es tan baja que se puede considerar que no representan un conjunto significativo para el análisis posterior.
 ```{r oper01f, eval=FALSE}
 SEXO[ SEXO %not in% c('Mu','Ho')]<-""
 ```
@@ -116,6 +198,8 @@ ggplot(tab, aes(x=amsd.codes, y = frequency)) + geom_bar(stat="identity",fill="#
 geom_text(aes(label=frequency), vjust=-0.1, size=3) 
 ```
 
+>* En este caso, también se descartan unidades atípicas en la medida de la edad
+(se mantienen los años, meses, semanas y días).
 
 ## Preparación de los datos: Normalización 
 
@@ -154,7 +238,7 @@ table(inci.112$Nombre.Municipio, exclude=NULL)[c(1,14,32,39, 54, 67, 81)]
 >* Utilizando la herramienta QGis se elabora una mapa base de Canarias para utilizarlo en las representaciones gráficas
 
 <div style="margin:0 auto;text-align:center">
-<object data="qgis.png" type="image/png" 
+<object data="graphics/qgis.png" type="image/png" 
   width="50%" height="50%" title="QGis"> 
 </object>
 </div>
@@ -162,7 +246,7 @@ table(inci.112$Nombre.Municipio, exclude=NULL)[c(1,14,32,39, 54, 67, 81)]
 >* Se crea un mapa en formato GeoJSON para su utilización con librerías javascript como Highmaps
 
 <div style="margin:0 auto;text-align:center">
-<object data="geojson.png" type="image/png" 
+<object data="graphics/geojson.png" type="image/png" 
   width="50%" height="50%" title="GeoJSON"> 
 </object>
 </div>
@@ -170,4 +254,4 @@ table(inci.112$Nombre.Municipio, exclude=NULL)[c(1,14,32,39, 54, 67, 81)]
 
 ## Análisis y presentación: Aplicación web
 
->* Ejemplos de resultados obtenidos
+>* 
