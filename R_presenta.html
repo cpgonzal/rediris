@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Luis Santacreus Ríos, Carlos B. Rosa Remedios (CECOES 1-1-2 Canarias)   Teno González Dos Santos (graduado en Ingeniería Informática, ULL)  Carlos Pérez-González (Depto. de Matemáticas, Estadística e Invest. Operativa, ULL)  Marcos Colebrook Santamaría, José Luis Roda García (Depto. de Ingeniería Informática y de Sistemas, ULL)" />
+  <meta name="author" content="Carlos B. Rosa Remedios, Luis Santacreus Ríos (CECOES 1-1-2 Canarias)   Teno González Dos Santos (graduado en Ingeniería Informática, ULL)  Carlos Pérez-González (Depto. de Matemáticas, Estadística e Invest. Operativa, ULL)  Marcos Colebrook Santamaría, José Luis Roda García (Depto. de Ingeniería Informática y de Sistemas, ULL)" />
   <title>Estudio de las alertas del servicio de emergencias 112 del Gobierno de Canarias utilizando técnicas de ciencia de los datos</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -52,7 +52,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="slide titlepage">
   <h1 class="title">Estudio de las alertas del servicio de emergencias 112 del Gobierno de Canarias utilizando técnicas de ciencia de los datos</h1>
   <p class="author">
-Luis Santacreus Ríos, Carlos B. Rosa Remedios (CECOES 1-1-2 Canarias) </br> </br> Teno González Dos Santos (graduado en Ingeniería Informática, ULL) </br> Carlos Pérez-González (Depto. de Matemáticas, Estadística e Invest. Operativa, ULL) </br> Marcos Colebrook Santamaría, José Luis Roda García (Depto. de Ingeniería Informática y de Sistemas, ULL)
+Carlos B. Rosa Remedios, Luis Santacreus Ríos (CECOES 1-1-2 Canarias) </br> </br> Teno González Dos Santos (graduado en Ingeniería Informática, ULL) </br> Carlos Pérez-González (Depto. de Matemáticas, Estadística e Invest. Operativa, ULL) </br> Marcos Colebrook Santamaría, José Luis Roda García (Depto. de Ingeniería Informática y de Sistemas, ULL)
   </p>
 </div>
 <div id="el-cecoes-1-1-2" class="slide section level2">
@@ -108,14 +108,33 @@ div.clear         { clear: both; }
 
 </style>
 <ul>
-<li>Presentación del servicio: Incluir las notas, comentarios, observaciones, …. propuestos por Luis Santacreus y Carlos Rosa</li>
-</ul>
-</div>
-<div id="el-sistema-de-gestion-de-alertas" class="slide section level2">
-<h1>El sistema de gestión de alertas</h1>
+<li>El CECOES 1-1-2 es el centro coordinador de emergencias y seguridad
 <ul>
-<li>Breve descripción del sistema de gestión de incidencias: Incluir las notas, comentarios, observaciones, …. propuestos por Luis Santacreus y Carlos Rosa</li>
+<li>Dos salas operativas: Las Palmas de Gran Canaria, Santa Cruz de Tenerife</li>
+<li>Capacidad tecnológica para actuar como un solo centro</li>
+</ul></li>
 </ul>
+<div id="112" style="margin:0 auto;text-align:center">
+<object data="graphics/Captura112A.png" type="image/png" width="80%" height="60%" title="112 Canarias">
+</object>
+</div>
+</div>
+<div id="sectores" class="slide section level2">
+<h1>Sectores</h1>
+<div id="112" style="margin:0 auto;text-align:center">
+<object data="graphics/Captura112B.png" type="image/png" width="90%" height="70%" title="112 Canarias">
+</object>
+</div>
+</div>
+<div id="integra-otros-servicios-de-emergencia" class="slide section level2">
+<h1>Integra otros servicios de emergencia</h1>
+<ul>
+<li>Lograr la cooperación efectiva entre los diferentes servicios para ajustarse a la demanda ciudadana</li>
+</ul>
+<div id="112" style="margin:0 auto;text-align:center">
+<object data="graphics/Captura112C.png" type="image/png" width="90%" height="70%" title="112 Canarias">
+</object>
+</div>
 </div>
 <div id="objetivos-planteados" class="slide section level2">
 <h1>Objetivos planteados</h1>
@@ -127,7 +146,7 @@ div.clear         { clear: both; }
 |2012            |372,012        |346,953       |
 -->
 <ul>
-<li>Desde el año 2005 se dispone de un histórico con las incidencias registradas en ambas provincias. Como se puede observar, hay un número bastanto alto de incidencias cada año.</li>
+<li>Desde el año 2005 se dispone de un histórico con las alertas o incidencias registradas en el sistema de gestión del 112 en ambas provincias. Como se puede observar, hay un número bastanto alto de incidencias cada año.</li>
 </ul>
 <div id="wrap">
 <div id="left_col" style="margin:0 auto;text-align:center">
@@ -182,7 +201,7 @@ div.clear         { clear: both; }
 
 </div>
 <ul>
-<li>El servicio del 112, en colaboración con la ETSII de ULL, se plantea realizar un análisis de datos masivos de dichas incidencias</li>
+<li>El servicio del 112, en colaboración con la ESIT (Escuela Superior de Ingeniería y Tecnología) de ULL, se plantea realizar un análisis de datos masivos de dichas incidencias</li>
 </ul>
 </div>
 <div id="conjunto-de-datos" class="slide section level2">
@@ -238,6 +257,10 @@ end&lt;-<span class="kw">proc.time</span>() -<span class="st"> </span>start</cod
 <ul>
 <li>El tiempo de carga total de los datos es muy elevado (&gt; 1min.) y el uso de memoria RAM se incrementa drásticamente. Por otro lado, al realizar ciertos análisis sobre los datos el tiempo de ejecución también es alto.</li>
 </ul>
+<pre><code>## [1] &quot;Uso RAM fichero incidencias 2005: 156.7 Mb&quot;</code></pre>
+<pre><code>## [1] &quot;Uso RAM fichero incidencias 2006: 178.9 Mb&quot;</code></pre>
+<pre><code>## [1] &quot;.........&quot;</code></pre>
+<pre><code>## [1] &quot;Uso RAM fichero incidencias 2014: 203.2 Mb&quot;</code></pre>
 </div>
 <div id="adquisicion-de-datos-uso-de-librerias-de-bigdata" class="slide section level2">
 <h1>Adquisición de datos: uso de librerías de bigdata</h1>
@@ -251,9 +274,13 @@ end&lt;-<span class="kw">proc.time</span>() -<span class="st"> </span>start</cod
 start &lt;-<span class="st"> </span><span class="kw">proc.time</span>()
 datos_global &lt;-<span class="st"> </span><span class="kw">load.ffdf</span>(<span class="dt">dir=</span><span class="st">&quot;data_ffdf&quot;</span>)
 end&lt;-<span class="kw">proc.time</span>() -<span class="st"> </span>start</code></pre></div>
-<pre><code>## [1] &quot;6.34 segundos&quot;</code></pre>
+<pre><code>## [1] &quot;7.35 segundos&quot;</code></pre>
 <ul>
-<li>Se aprecia una reducción significativa en el tiempo de carga de todo el conjunto de datos.</li>
+<li>Se aprecia una reducción significativa en el tiempo de carga de todo el conjunto de datos. Además, con respecto al uso de la RAM</li>
+</ul>
+<pre><code>## [1] &quot;Uso RAM de fichero ffdf: 305.2 Mb&quot;</code></pre>
+<ul>
+<li>Los tiempos de ejecución de los análisis se optimizan de forma similar haciendo uso de otra librería de R llamada ‘dplyr’.</li>
 </ul>
 </div>
 <div id="preparacion-de-los-datos-depuracion-i" class="slide section level2">
@@ -353,7 +380,7 @@ FECHA.FINALIZA&lt;-
 <li>En esta fase del trabajo, se ha creado una aplicación web para el análisis y consulta de los datos utilizando una librería de R+Rstudio conocida como Shiny</li>
 </ul>
 <div style="margin:0 auto;text-align:center">
-<object data="graphics/Captura01.png" type="image/png" width="100%" height="80%">
+<object data="graphics/Captura01c.png" type="image/png" width="100%" height="80%" position:relative margin-top="-50px">
 </object>
 </div>
 <ul>
@@ -366,7 +393,7 @@ FECHA.FINALIZA&lt;-
 <li>En particular, se puede seleccionar un municipio y ver los detalles del número de incidentes.</li>
 </ul>
 <div style="margin:0 auto;text-align:center">
-<object data="graphics/Captura02.png" type="image/png" width="100%" height="80%">
+<object data="graphics/Captura02b.png" type="image/png" width="100%" height="80%">
 </object>
 </div>
 </div>
@@ -376,7 +403,7 @@ FECHA.FINALIZA&lt;-
 <li>La aplicación tiene aspectos muy interesantes, como el que permite exportar el mapa resultante en un archivo gráfico para su inclusión en informes.</li>
 </ul>
 <div style="margin:0 auto;text-align:center">
-<object data="graphics/Captura03.png" type="image/png" width="100%" height="80%">
+<object data="graphics/Captura03b.png" type="image/png" width="100%" height="80%">
 </object>
 </div>
 </div>
@@ -386,7 +413,7 @@ FECHA.FINALIZA&lt;-
 <li>También hemos generado un apartado para el análisis temporal de los incidentes, lo que permite realizar un estudio detallado de los datos</li>
 </ul>
 <div style="margin:0 auto;text-align:center">
-<object data="graphics/Captura04a.png" type="image/png" width="100%" height="80%">
+<object data="graphics/Captura04b.png" type="image/png" width="100%" height="80%">
 </object>
 </div>
 <ul>
@@ -447,7 +474,7 @@ FECHA.FINALIZA&lt;-
 </ul></li>
 </ul>
 <ul>
-<li>Esta trabajo ha sido posible con la colaboración del servicio del 112, quienes tienen un histórico bastante amplio de datos registrados de incidencias, y los expertos que conocen las técnicas y herramientas para analizarlos.</li>
+<li>Este trabajo ha sido posible con la colaboración del servicio del 112, quienes tienen un histórico bastante amplio de datos registrados de incidencias, y los expertos que conocen las técnicas y herramientas para analizarlos.</li>
 </ul>
 </div>
 <div id="referencias" class="slide section level2">
