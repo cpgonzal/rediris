@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="lib/htmlwidgets-0.6/htmlwidgets.js"></script>
+<script src="lib/jquery-1.11.1/jquery.min.js"></script>
+<link href="lib/leaflet-0.7.3/leaflet.css" rel="stylesheet" />
+<script src="lib/leaflet-0.7.3/leaflet.js"></script>
+<link href="lib/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="lib/leaflet-binding-1.0.1/leaflet.js"></script>
+<script src="lib/leaflet-providers-1.0.27/leaflet-providers.js"></script>
+<script src="lib/leaflet-providers-plugin-1.0.1/leaflet-providers-plugin.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/turban/Leaflet.Sync/master/L.Map.Sync.js"></script>
+  <style>
+              .map, .label1 {
+              width: 90%;
+              float: left;
+              }
+              .label {
+              width: 50%;
+              float: left;
+              }</style>
+</head>
+<body style="background-color:white;">
+<div id="maps1">
+  <div class="label">
+    <strong>Anchieta campus:</strong>
+    <div class="map" id="wifi.map.anchieta">
+      <div id="htmlwidget-2291" style="width:100%;height:400px;" class="leaflet html-widget"></div>
+      <script type="application/json" data-for="htmlwidget-2291">{"x":{"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",{"minZoom":10,"maxZoom":17,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false},null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"setMaxBounds","args":[27.478813,-17.322683,29.483014,-15.319417]},{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[28.480247,28.483014,28.478813,28.481374,28.479553],[-16.320029,-16.321317,-16.322683,-16.319417,-16.322653],[4.89607018427788,11.1901642281976,5.43081495986817,3.96240944205005,8.0959683775989],["p1","p2","p3","p4","p5","p6","p7","p8","p9","p10","p11","p12","p13","p14","p15","p16","p17","p18","p19"],null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"red","weight":2.5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.1,"dashArray":null},null,null,["Location: BI Biologia Red WIFI <br>Total: 18852","Location: ET ETSII Red WIFI <br>Total: 43087","Location: FA Farmacia Red WIFI <br>Total: 20911","Location: IA IUBO+Agricolas Red WIFI <br>Total: 15257","Location: QU Quimica Red WIFI <br>Total: 31173"]]},{"method":"removeControl","args":["legend"]}],"setView":[[28.4806002,-16.3212198],14,[]],"limits":{"lat":[28.478813,28.483014],"lng":[-16.322683,-16.319417]}},"evals":[],"jsHooks":[]}</script>
+    </div>
+  </div>
+  <div class="label">
+    <strong>Guajara campus:</strong>
+    <div class="map" id="wifi.map.guajara">
+      <div id="htmlwidget-227" style="width:100%;height:400px;" class="leaflet html-widget"></div>
+      <script type="application/json" data-for="htmlwidget-227">{"x":{"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",{"minZoom":10,"maxZoom":17,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false},null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"setMaxBounds","args":[27.467004,-17.305769,29.47003,-15.298225]},{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[28.469041,28.470028,28.468868,28.47003,28.469314,28.467004],[-16.304635,-16.305295,-16.305113,-16.305769,-16.301921,-16.298225],[6.51432890050085,15.7634137441614,21.6611889306013,29.4951089941786,8.07882745715744,10.6652884674069],["p1","p2","p3","p4","p5","p6","p7","p8","p9","p10","p11","p12","p13","p14","p15","p16","p17","p18","p19"],null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"red","weight":2.5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.1,"dashArray":null},null,null,["Location: BB Biblioteca General Red WIFI <br>Total: 25083","Location: DE Derecho Red WIFI <br>Total: 60696","Location: DP Departamentales Red WIFI <br>Total: 83405","Location: EC Economicas Red WIFI <br>Total: 113569","Location: PE Periodisco Red WIFI <br>Total: 31107","Location: RU Colegio Mayor RUPI Red WIFI <br>Total: 41066"]]},{"method":"removeControl","args":["legend"]}],"setView":[[28.4690475,-16.303493],14,[]],"limits":{"lat":[28.467004,28.47003],"lng":[-16.305769,-16.298225]}},"evals":[],"jsHooks":[]}</script>
+    </div>
+  </div>
+</div>
+<div id="maps2">
+  <div class="label">
+    <strong>Santa Cruz campus:</strong>
+    <div class="map" id="wifi.map.santacruz">
+      <div id="htmlwidget-2215" style="width:100%;height:400px;" class="leaflet html-widget"></div>
+      <script type="application/json" data-for="htmlwidget-2215">{"x":{"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",{"minZoom":10,"maxZoom":17,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false},null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"setMaxBounds","args":[27.455745,-17.291248,29.481259,-15.240149]},{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[28.455745,28.481259,28.4710613],[-16.291248,-16.240149,-16.2575494],[11.5683033215728,10.4668693277513,2.38904695183791],["p1","p2","p3","p4","p5","p6","p7","p8","p9","p10","p11","p12","p13","p14","p15","p16","p17","p18","p19"],null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"red","weight":2.5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.1,"dashArray":null},null,null,["Location: ME Medicina Red WIFI <br>Total: 44543","Location: NA Nautica Red WIFI <br>Total: 40302","Location: VJ Centros Multiples 25 de Julio Red WIFI <br>Total: 1498"]]},{"method":"removeControl","args":["legend"]}],"setView":[[28.4693551,-16.2629821333333],13,[]],"limits":{"lat":[28.455745,28.481259],"lng":[-16.291248,-16.240149]}},"evals":[],"jsHooks":[]}</script>
+    </div>
+  </div>
+  <div class="label">
+    <strong>Adeje campus:</strong>
+    <div class="map" id="wifi.map.adeje">
+      <div id="htmlwidget-1737" style="width:100%;height:400px;" class="leaflet html-widget"></div>
+      <script type="application/json" data-for="htmlwidget-1737">{"x":{"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",{"minZoom":10,"maxZoom":17,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false},null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"setMaxBounds","args":[27.122463,-17.734031,29.122463,-15.734031]},{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[28.122463,-16.734031,2.82773245100878,["p1","p2","p3","p4","p5","p6","p7","p8","p9","p10","p11","p12","p13","p14","p15","p16","p17","p18","p19"],null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"red","weight":2.5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.1,"dashArray":null},null,null,"Location: AD Adeje Red WIFI <br>Total: 10888"]},{"method":"removeControl","args":["legend"]}],"setView":[[28.122463,-16.734031],14,[]],"limits":{"lat":[28.122463,28.122463],"lng":[-16.734031,-16.734031]}},"evals":[],"jsHooks":[]}</script>
+    </div>
+  </div>
+</div>
+</body>
+</html>
